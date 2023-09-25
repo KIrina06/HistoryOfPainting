@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+	
+{% load static %}
+
+{% block title %}Заказ №{{ data.id }}{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/examp.css' %}">
+    <div class="container">
+        <div class="panel">
+        <div class="ring">
+            <div class="card card1"></div>
+            <div class="border">
+            <p class="title">Подробнее</p>
+            <div class="slide">
+                <h6 class="para">Подробнее...</h6>
+                <div class="line">
+                <h6 class="para">Стоимость</h6> <i class="fa fa-plane" aria-hidden="true"></i>
+                <h6 class="para">~~~</h6>
+                </div>
+                <div class="line">
+                <h6 class="para">Длительность</h6> <i class="fa fa-plane" aria-hidden="true"></i>
+                <h6 class="para">~~~</h6>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+  {% endblock %}

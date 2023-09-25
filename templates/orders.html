@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Список заказов{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+<ul>
+    <div class="container">
+    {% for order in data.orders %}
+       
+        <div class="card">
+          <div class="box">
+            <div class="content">
+              <h2>{{order.id}}</h2>
+              <h3>{{order.title}}</h3>
+              <p>Интересует? Подробную информацию можно узнать, нажав на кнопку Read More</p>
+              <a href="{% url 'order_url' order.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+      
+    {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
+    </div>
+</ul>
+{% endblock %}
+
