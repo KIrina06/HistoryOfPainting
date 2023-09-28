@@ -68,7 +68,7 @@ def delExp(request):
         'status': 'null'
     }
     with connection.cursor() as cursor:
-        cursor.execute('UPDATE Expertise SET status="удалён" WHERE name = %s', input_text)
+        cursor.execute('UPDATE Expertise SET status="удалён" WHERE name = %s', [input_text])
     data = {
         'title': 'Услуги',
         'orders': Expertise.objects.all()}
