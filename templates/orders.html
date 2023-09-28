@@ -6,12 +6,20 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
-   
-    <form action="sendText" method="post">
+   <div>
+      <form action="sendText" method="post">
+          {% csrf_token %}
+          <input name="name" type="text"><br><br>
+          <input type="Submit" value="Перейти" >
+      </form>
+   </div>
+   <div>
+      <form action="delExp" method="post">
         {% csrf_token %}
         <input name="name" type="text"><br><br>
-        <input type="submit" value="Submit" >
-    </form>
+        <input type="Submit" value = "Удалить экспертизу" >
+      </form>
+   </div>
 <ul>
     <div class="container">
     {% for order in orders %}

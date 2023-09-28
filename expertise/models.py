@@ -4,6 +4,9 @@ from datetime import date
 
 class Status(models.Model):
     name = models.CharField(max_length=120, unique=True)
+    
+    def __str__(self):
+        return self.name
 
 class User(models.Model):
     surname = models.CharField(max_length=100)
@@ -17,6 +20,7 @@ class Expertise(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to='static')
     status = models.ForeignKey(to=Status, on_delete=models.PROTECT)
+    
 
 class Application(models.Model):
     status = models.ForeignKey(to=Status, on_delete=models.PROTECT)
