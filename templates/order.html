@@ -2,30 +2,37 @@
 	
 {% load static %}
 
-{% block title %}Заказ №{{ data.id }}{% endblock %}
+{% block title %}{{name}}{% endblock %}
 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/examp.css' %}">
+    
     <div class="container">
-        <div class="panel">
-        <div class="ring">
-            <div class="card card1"></div>
-            <div class="border">
-            <p class="title">Подробнее</p>
-            <div class="slide">
-                <h6 class="para">Подробнее...</h6>
-                <div class="line">
-                <h6 class="para">Стоимость</h6> <i class="fa fa-plane" aria-hidden="true"></i>
-                <h6 class="para">~~~</h6>
-                </div>
-                <div class="line">
-                <h6 class="para">Длительность</h6> <i class="fa fa-plane" aria-hidden="true"></i>
-                <h6 class="para">~~~</h6>
-                </div>
+        <div class="container-inner">
+          <div class="main-content">
+            <div class="main-headings" id="main-headings-js">
+      
+            <div class="heading">
+              <h3 id="heading2">{{name}}</h3>
+            </br>
             </div>
+      
+            <div class="short-bio">
+              <p>{{description}}</p>
+              <p>Цена: {{price}}</p>
+         
             </div>
+      
+            </div>
+            
+          </div>
+      
+          <div class="image-wrapper">
+          <div class="image-container">
+            <img class="image" src={{image}}>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
+      </div>
 
   {% endblock %}

@@ -6,15 +6,21 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/orders.css' %}">
+   
+    <form action="sendText" method="post">
+        {% csrf_token %}
+        <input name="name" type="text"><br><br>
+        <input type="submit" value="Submit" >
+    </form>
 <ul>
     <div class="container">
-    {% for order in data.orders %}
+    {% for order in orders %}
        
         <div class="card">
           <div class="box">
             <div class="content">
               <h2>{{order.id}}</h2>
-              <h3>{{order.title}}</h3>
+              <h3>{{order.name}}</h3>
               <p>Интересует? Подробную информацию можно узнать, нажав на кнопку Read More</p>
               <a href="{% url 'order_url' order.id %}">Read More</a>
             </div>
