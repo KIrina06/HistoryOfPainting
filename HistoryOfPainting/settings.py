@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qp8+*$2o*g80osuof6m%g8#aa*%40#hq(m+%35vrwkv$4=2h+@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'localhost']
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'HistoryOfPainting.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +75,14 @@ WSGI_APPLICATION = 'HistoryOfPainting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database',
+        'USER': 'admin',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': 5432,
+        #'OPTIONS': {'charset': 'utf8'},
+        'TEST_CHARSET': 'utf8',
     }
 }
 
