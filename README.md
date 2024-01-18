@@ -1,9 +1,9 @@
 History of paintings
 
-Ссылка на бекенд:
+Ссылка на бекенд: https://github.com/KIrina06/HistoryOfPainting
 
-Ссылка на фронтенд: 
+Ссылка на фронтенд: https://github.com/KIrina06/History_of_painting_front
 
-Ссылка на нативое приложение:
+Ссылка на нативое приложение: https://github.com/KIrina06/Paintings-Native-app
 
-Ссылка на асинхронный сервис:
+Ссылка на асинхронный сервис: https://github.com/KIrina06/History_of_paintings_asynch
