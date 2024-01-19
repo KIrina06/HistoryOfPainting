@@ -7,39 +7,41 @@ from django.utils import timezone
 
 from painting.utils.utils import format_time
 
-class Expertises(models.Model):
+class Paintings(models.Model):
     STATUS_CHOICES = (
         (1, 'Действует'),
         (2, 'Удалена'),
     )
 
-    expertise_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     picture = models.CharField(blank=True, null=True)
+    picture = models.BinaryField(blank=True, null=True)
     title = models.CharField(blank=True, null=True, max_length=70, unique=True)
     price = models.CharField(blank=True, null=True)
     context = models.CharField(blank=True, null=True)
-    expertise_status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
-class Requests(models.Model):
+class Expertises(models.Model):
     STATUS_CHOICES = (
         (1, 'Черновик'),
         (2, 'В работе'),
-        (3, 'Завершен'),
-        (4, 'Отклонен'),
-        (5, 'Удален'),
+        (3, 'Завершена'),
+        (4, 'Отклонена'),
+        (5, 'Удалена'),
     )
 
-    request_id = models.BigAutoField(primary_key=True)
-    expertises = models.ManyToManyField(Expertises)
+    id = models.BigAutoField(primary_key=True)
+    paintings = models.ManyToManyField(Paintings)
     closed_date = models.DateTimeField(blank=True, null=True)
     created_date = models.DateTimeField(blank=True, null=True)
     formated_date = models.DateTimeField(blank=True, null=True)
-    req_status = models.IntegerField(choices=STATUS_CHOICES, default=1)  # This field type is a guess.
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)  # This field type is a guess.
+    artist = models.CharField(blank=True, null=True)
     
 
-class ReqExps(models.Model):
-    expertise = models.ForeignKey('Expertises', models.DO_NOTHING, primary_key=True)
-    request = models.ForeignKey('Requests', models.DO_NOTHING, primary_key=True)
+class PaintExps(models.Model):
+    expertise = models.ForeignKey('Expertises', models.DO_NOTHING)
+    painting = models.ForeignKey('Paintings', models.DO_NOTHING)
 
     class Meta:
-        unique_together = (('expertise', 'request'),)
+        unique_together = (('expertise', 'painting'),)

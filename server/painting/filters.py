@@ -1,4 +1,4 @@
-def ExpertisesFilter(objects, request):
+def PaintingsFilter(objects, request):
     if request.query_params.get('title'):
         return objects.filter(title__icontains=request.query_params.get('title'))
     return objects
@@ -15,9 +15,9 @@ def DateFilter(objects, request):
 
 def StatusFilter(objects, request):
     if request.query_params.get('status'):
-        return objects.filter(breach_status=request.query_params.get('status'))
+        return objects.filter(status=request.query_params.get('status'))
     return objects
 
 
-def RequestsFilter(objects, request):
+def ExpertisesFilter(objects, request):
     return DateFilter(StatusFilter(objects,request),request)

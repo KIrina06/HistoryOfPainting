@@ -1,20 +1,20 @@
 from django.urls import path
-from painting.views.ExpertisesViews import *
-from painting.views.RequestsViews import *
+from .views.PaintingsViews import *
+from .views.ExpertisesViews import *
 
 urlpatterns = [
-    path('api/expertises/', get_expertises),  # GET
-    path('api/expertises/<int:expertise_id>/', get_expertise_by_id),  # GET
-    path('api/expertises/create/', create_expertise),  # POST
-    path('api/expertises/<int:expertise_id>/update/', update_expertise),  # PUT
-    path('api/expertises/<int:expertise_id>/delete/', delete_expertise),  # DELETE
-    path('api/expertises/<int:expertise_id>/add_to_request/', add_expertise_to_request),  # POST
+    path('api/paintings/', get_expertises),  # GET
+    path('api/paintings/<int:p_id>/', get_painting_by_id),  # GET
+    path('api/paintings/create/', create_painting),  # POST
+    path('api/paintings/<int:p_id>/update/', update_painting),  # PUT
+    path('api/paintings/<int:p_id>/delete/', delete_painting),  # DELETE
+    path('api/paintings/<int:p_id>/add_to_request/', add_painting_to_expertise),  # POST
 
-    path('api/requests/', get_requests),  # GET
-    path('api/requests/<int:request_id>/', get_request_by_id),  # GET
-    path('api/requests/<int:request_id>/update/', update_request),  # PUT
-    path('api/requests/<int:request_id>/update_status_user/', update_request_user),  # PUT
-    path('api/requests/<int:request_id>/update_status_admin/', update_request_admin),  # PUT
-    path('api/requests/<int:request_id>/delete/', delete_request),  # DELETE
-    path('api/requests/<int:request_id>/delete_expertise/<int:expertise_id>/', delete_expertise_from_request),  # DELETE
+    path('api/expertises/', get_expertises),  # GET
+    path('api/expertises/<int:e_id>/', get_expertise_by_id),  # GET
+    path('api/expertises/<int:e_id>/update/', update_expertise),  # PUT
+    path('api/expertises/<int:e_id>/update_status_user/', update_expertise_user),  # PUT
+    path('api/expertises/<int:e_id>/update_status_admin/', update_expertise_admin),  # PUT
+    path('api/expertises/<int:e_id>/delete/', delete_expertise),  # DELETE
+    path('api/expertises/<int:e_id>/delete_painting/<int:p_id>/', delete_painting_from_expertise),  # DELETE
 ]
