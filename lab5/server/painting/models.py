@@ -86,8 +86,8 @@ class Requests(models.Model):
 
 
 class ReqExps(models.Model):
-    expertise = models.ForeignKey('Expertises', models.DO_NOTHING, primary_key=True)
-    request = models.ForeignKey('Requests', models.DO_NOTHING, primary_key=True)
+    expertise = models.ForeignKey('Expertises', models.DO_NOTHING)
+    request = models.ForeignKey('Requests', models.DO_NOTHING)
 
     class Meta:
         unique_together = (('expertise', 'request'),)
