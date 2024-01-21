@@ -1,0 +1,54 @@
+from rest_framework.permissions import BasePermission
+from django.conf import settings
+
+from painting.jwt_helper import get_jwt_payload, get_access_token
+from painting.models import CustomUser
+
+
+class IsAuthenticated(BasePermission):
+    def has_permission(self, request, view):
+        token = get_access_token(request)
+
+        if token is None:
+            return False
+
+        # Ensure token is valid
+        try:
+            payload = get_jwt_payload(token)
+        except Exception as e:
+            return False
+
+        # Ensure user exists
+        try:
+            user = CustomUser.objects.get(pk=payload["user_id"])
+        except Exception as e:
+            return False
+
+        return user.is_active
+
+
+class IsModerator(BasePermission):
+    def has_permission(self, request, view):
+        token = get_access_token(request)
+
+        if token is None:
+            return False
+
+        # Ensure token is valid
+        try:
+            payload = get_jwt_payload(token)
+        except Exception as e:
+            return False
+
+        # Ensure user exists
+        try:
+            user = CustomUser.objects.get(pk=payload["user_id"])
+        except Exception as e:
+            return False
+
+        return user.is_moderator
+
+class IsInternal(BasePermission):
+    def has_permission(self, request, view):
+        token = request.META.get('HTTP_TOKEN', '')
+        return token == settings.PRIVATE_TOKEN
